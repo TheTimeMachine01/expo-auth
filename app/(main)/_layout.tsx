@@ -29,7 +29,7 @@ const Page: React.FC = () => {
   return (
     <ProtectedRoutes>
       <Tabs>
-        <Tabs.Screen
+        {/* <Tabs.Screen
           key={'home'}
           name={'home'}
           // component={{ profile }}
@@ -39,8 +39,8 @@ const Page: React.FC = () => {
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => <FontAwesome name="user" size={24} color='black' />
           }}
-        />
-        <Tabs.Screen
+        /> */}
+        {/* <Tabs.Screen
           key={'profile'}
           name={'profile'}
           // component={{ profile }}
@@ -50,15 +50,22 @@ const Page: React.FC = () => {
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color }) => <Ionicons name="person-circle" size={24} color="#000" />
           }}
-        />
-        <Tabs.Screen
+        /> */}
+        {/* <Tabs.Screen
           key={'index'}
           name={'index'}
           // component={{ index }}
           options={{
             href: null,
           }}
-        />
+        /> */}
+         <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
+        }}
+      />
       </Tabs>
     </ProtectedRoutes>
   )
