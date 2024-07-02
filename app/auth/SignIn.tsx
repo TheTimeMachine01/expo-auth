@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 import { View, Text, Button, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction, logoutAction } from '../(redux)/authSlice';
 
 const SignIn: React.FC = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,8 +20,17 @@ const SignIn: React.FC = () => {
     // Implement login logic here
     console.log('Username:', username);
     console.log('Password:', password);
+    if(username && password) {
+      dispatch(loginAction(username));
+      router.push('/home')
+    }
   };
 
+  const removeToken = () => {
+    dispatch(logoutAction());
+  }
+   
+  useSelector((state: any) => console.log('Your token: ', state.auth.token));
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -56,6 +68,9 @@ const SignIn: React.FC = () => {
         Don't have an account yet?{' '}
         <TouchableOpacity onPress={() => goToSignUp()}>
           <Text style={styles.signupLink}>Sign Up</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => removeToken()}>
+          <Text style={styles.signupLink}>Logout ab</Text>
         </TouchableOpacity>
       </Text>
     </View>

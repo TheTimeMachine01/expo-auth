@@ -1,25 +1,14 @@
 import { Slot, Stack } from 'expo-router'
 import React from 'react'
+import { Provider } from 'react-redux'
+import AppWrapper from './(redux)/AppWrapper'
+import { store } from './(redux)/store'
 
 const RootLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen
-        name='index'
-        options={{
-          headerShown: false,
-          // headerTitle: 'Index',
-        }}
-      />
-      <Stack.Screen
-        name='auth'
-        options={{
-          headerShown: false,
-          // headerTitle: 'Index',
-        }}
-      />
-      {/* <Slot /> */}
-    </Stack>
+    <Provider store={store}>
+      <AppWrapper />
+    </Provider>
   )
 }
 
